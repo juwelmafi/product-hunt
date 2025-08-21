@@ -1,10 +1,10 @@
-"use client"
+"use client";
+import Link from "next/link";
 import React from "react";
 
 export default function ProductCard({ product }) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-      
       {/* Product Image */}
       <img
         src={product.image}
@@ -26,12 +26,11 @@ export default function ProductCard({ product }) {
         </p>
 
         {/* Detail Button */}
-        <button
-          className="mt-4 w-full py-2 text-white bg-emerald-500 rounded-md hover:bg-emerald-700 transition-colors font-medium"
-          onClick={() => alert(`View details for ${product.name}`)}
-        >
-          View Details
-        </button>
+        <Link href={`/products/${product?._id}`}>
+          <button className="mt-4 w-full py-2 text-white bg-emerald-500 rounded-md hover:bg-emerald-700 transition-colors font-medium">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -22,10 +22,9 @@ export default function NavBar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
             <Link href="/" className="hover:text-gray-200">Home</Link>
-            <Link href="/scholarships" className="hover:text-gray-200">Scholarships</Link>
-            <Link href="/reviews" className="hover:text-gray-200">Reviews</Link>
             <Link href="/dashboard" className="hover:text-gray-200">Dashboard</Link>
-            <Link href="/contact" className="hover:text-gray-200">Contact</Link>
+            <Link href="/login" className="hover:text-gray-200">Login</Link>
+            <Link href="/register" className="hover:text-gray-200">Register</Link>
           </div>
 
           {/* Mobile Hamburger */}
