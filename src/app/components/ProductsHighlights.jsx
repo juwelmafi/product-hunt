@@ -1,12 +1,14 @@
 // components/ProductHighlight.jsx
 import React from "react";
 import ProductCard from "./ProductCard";
+import dbConnect from "@/lib/dbConnect";
 
 export default async function ProductHighlight() {
   // Use absolute path for server-side fetch
-  const res = await fetch("http://localhost:3000/api/products");
-  const json = await res.json();
-  const products = json.data; // ← use .data
+  const products = await dbConnect("products").find({}).toArray();
+  // const res = await fetch("http://localhost:3000/api/products");
+  // const json = await res.json();
+  // const products = json.data; // ← use .data
 
   return (
     <section className="bg-gray-50 py-16">
