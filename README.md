@@ -1,6 +1,6 @@
 # My Next.js Project
 
-This is a **Next.js** project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).  
+This is a **Next.js** project bootstrapped with [`Pruduct Hunt`](https://product-hunt-beryl.vercel.app/).  
 It is a modern, fast, and scalable web application built using the Next.js framework with optimized fonts and a structured file system.
 
 ---
