@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
+import { signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { data: session, status } = useSession();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  console.log(session);
 
   return (
     <nav className="bg-emerald-500 text-white shadow-md fixed w-full z-50">
@@ -16,15 +19,34 @@ export default function NavBar() {
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold">ProductHunt</Link>
+            <Link href="/" className="text-2xl font-bold">
+              ProductHunt
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
-            <Link href="/" className="hover:text-gray-200">Home</Link>
-            <Link href="/dashboard" className="hover:text-gray-200">Dashboard</Link>
-            <Link href="/login" className="hover:text-gray-200">Login</Link>
-            <Link href="/register" className="hover:text-gray-200">Register</Link>
+            <Link href="/" className="hover:text-gray-200">
+              Home
+            </Link>
+            <Link href="/products" className="hover:text-gray-200">
+              Products
+            </Link>
+            <Link href="/add-product" className="hover:text-gray-200">
+              Add Product
+            </Link>
+            {status === "authenticated" ? (
+              <button onClick={()=>signOut()}>Log out</button>
+            ) : (
+              <>
+                <Link href="/login" className="hover:text-gray-200">
+                  Login
+                </Link>
+                <Link href="/register" className="hover:text-gray-200">
+                  Register
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Hamburger */}
@@ -39,11 +61,41 @@ export default function NavBar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-emerald-500 px-4 pt-2 pb-4 space-y-2">
-          <Link href="/" className="block hover:text-gray-200" onClick={toggleMenu}>Home</Link>
-          <Link href="/scholarships" className="block hover:text-gray-200" onClick={toggleMenu}>Scholarships</Link>
-          <Link href="/reviews" className="block hover:text-gray-200" onClick={toggleMenu}>Reviews</Link>
-          <Link href="/dashboard" className="block hover:text-gray-200" onClick={toggleMenu}>Dashboard</Link>
-          <Link href="/contact" className="block hover:text-gray-200" onClick={toggleMenu}>Contact</Link>
+          <Link
+            href="/"
+            className="block hover:text-gray-200"
+            onClick={toggleMenu}
+          >
+            Home
+          </Link>
+          <Link
+            href="/scholarships"
+            className="block hover:text-gray-200"
+            onClick={toggleMenu}
+          >
+            Scholarships
+          </Link>
+          <Link
+            href="/reviews"
+            className="block hover:text-gray-200"
+            onClick={toggleMenu}
+          >
+            Reviews
+          </Link>
+          <Link
+            href="/dashboard"
+            className="block hover:text-gray-200"
+            onClick={toggleMenu}
+          >
+            Dashboard
+          </Link>
+          <Link
+            href="/contact"
+            className="block hover:text-gray-200"
+            onClick={toggleMenu}
+          >
+            Contact
+          </Link>
         </div>
       )}
     </nav>
