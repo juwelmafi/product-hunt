@@ -5,10 +5,12 @@ import dbConnect from "@/lib/dbConnect";
 
 export default async function ProductHighlight() {
   // Use absolute path for server-side fetch
-  const products = await dbConnect("products").find({}).toArray();
-  // const res = await fetch("http://localhost:3000/api/products");
-  // const json = await res.json();
-  // const products = json.data; // ← use .data
+  // const products = await dbConnect("products").find({}).toArray();
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
+    cache: "no-store", // always fetch fresh
+  });
+  const json = await res.json();
+  const products = json.data; // ← use .data
 
   return (
     <section className="bg-gray-50 py-16">
@@ -19,7 +21,7 @@ export default async function ProductHighlight() {
 
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { registerUser } from "@/app/actions/auth/registerUser";
+import SocialLogin from "@/app/login/components/SocialLogin";
 import React from "react";
 import { useState } from "react";
 
@@ -58,6 +59,7 @@ export default function RegisterForm() {
       >
         Register
       </button>
+      <SocialLogin/>
     </form>
   );
 }

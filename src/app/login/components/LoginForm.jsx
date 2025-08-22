@@ -2,6 +2,7 @@
 import React, { useReducer } from "react";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import SocialLogin from "./SocialLogin";
 // import { useRouter } from "next/router";
 
 export default function LoginForm() {
@@ -53,6 +54,7 @@ export default function LoginForm() {
       >
         Login
       </button>
+      <SocialLogin/>
     </form>
   );
 }

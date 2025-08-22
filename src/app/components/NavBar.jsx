@@ -36,7 +36,7 @@ export default function NavBar() {
               Add Product
             </Link>
             {status === "authenticated" ? (
-              <button onClick={()=>signOut()}>Log out</button>
+              <button onClick={() => signOut()}>Log out</button>
             ) : (
               <>
                 <Link href="/login" className="hover:text-gray-200">
@@ -69,33 +69,40 @@ export default function NavBar() {
             Home
           </Link>
           <Link
-            href="/scholarships"
+            href="/products"
             className="block hover:text-gray-200"
             onClick={toggleMenu}
           >
-            Scholarships
+            Products
           </Link>
           <Link
-            href="/reviews"
+            href="/add-product"
             className="block hover:text-gray-200"
             onClick={toggleMenu}
           >
-            Reviews
+            Add Product
           </Link>
-          <Link
-            href="/dashboard"
-            className="block hover:text-gray-200"
-            onClick={toggleMenu}
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="/contact"
-            className="block hover:text-gray-200"
-            onClick={toggleMenu}
-          >
-            Contact
-          </Link>
+
+          {status === "authenticated" ? (
+            <button onClick={() => signOut()}>Log out</button>
+          ) : (
+            <>
+              <Link
+                onClick={toggleMenu}
+                href="/login"
+                className="hover:text-gray-200"
+              >
+                Login
+              </Link>
+              <Link
+                onClick={toggleMenu}
+                href="/register"
+                className="hover:text-gray-200"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       )}
     </nav>
